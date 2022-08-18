@@ -3,15 +3,19 @@ package com.skillsoft.concurrency;
 public class MyThread implements Runnable {
     @Override
     public void run() {
-        System.out.println("This has been executed by a thread");
+        for (int i = 1; i < 5; i++) {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("i + " + i);
+        }
     }
 
     public static void main(String[] args) {
         Thread myThread = new Thread(new MyThread());
-
         myThread.start();
-        System.out.println("Is myThread a Runnable? " + (myThread instanceof Runnable));
-        System.out.println("Is myThread a Thread? " + (myThread instanceof Thread));
-        System.out.println("Is myThread a Object? " + (myThread instanceof Object));
+
     }
 }
