@@ -10,7 +10,7 @@ public class ThreadLifeCycle {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println("I am walking...");
+                System.out.println("I am walking... My state is " + Thread.currentThread().getState());
             }
         }
     }
@@ -31,11 +31,21 @@ public class ThreadLifeCycle {
 
     public static void main(String[] args) {
         Thread walkThread = new Thread(new Walk());
-        Thread chewThread = new Thread(new ChewGum());
+
         try {
             walkThread.start();
+            System.out.println("State of WalkThread thread after start: " + walkThread.getState());
+            System.out.println("State of main thread after WalkThread start: " + Thread.currentThread().getState());
+            Thread.sleep(1000);
             walkThread.join(5000);
-            chewThread.start();
+            System.out.println("State of WalkThread thread after join: " + walkThread.getState());
+            System.out.println("State of main thread after WalkThread join: " + Thread.currentThread().getState());
+
+            System.out.println("Main thread will sleep for 20s...");
+            Thread.sleep(20000);
+
+            System.out.println("State of WalkThread thread at the end : " + walkThread.getState());
+            System.out.println("State of main thread after WalkThread  at the end: " + Thread.currentThread().getState());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
