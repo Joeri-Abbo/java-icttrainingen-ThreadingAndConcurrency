@@ -9,13 +9,17 @@ public class MyThread implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("i + " + i);
+            String threadName = Thread.currentThread().getName();
+            System.out.println(threadName + " says: " + i);
         }
     }
 
     public static void main(String[] args) {
-        Thread myThread = new Thread(new MyThread());
-        myThread.start();
+        Thread firstThread = new Thread(new MyThread(),"1st Thread");
+        Thread secondThread = new Thread(new MyThread());
+        secondThread.setName("2nd Thread");
+        firstThread.start();
+        secondThread.start();
 
     }
 }
