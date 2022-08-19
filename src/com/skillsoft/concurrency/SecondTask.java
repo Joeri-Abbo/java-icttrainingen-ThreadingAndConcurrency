@@ -15,14 +15,14 @@ public class SecondTask implements Runnable {
     @Override
     public void run() {
         try {
-            long writeLockTwoStamp = rTwo.rTwoLock.writeLock();
+            long writeLockTwoStamp = rTwo.rTwoLock.readLock();
             System.out.println("Lock acquired on ResourceTwo by " + Thread.currentThread().getName() + ". Lock stamp is " + writeLockTwoStamp);
             Thread.sleep(1000);
             rTwo.myVar++;
             rTwo.rTwoLock.unlock(writeLockTwoStamp);
             System.out.println("Lock on ResourceTwo released by " + Thread.currentThread().getName());
 
-            long writeLockOneStamp = rOne.rOneLock.writeLock();
+            long writeLockOneStamp = rOne.rOneLock.readLock();
             System.out.println("Lock acquired on ResourceOne by " + Thread.currentThread().getName() + ". Lock stamp is " + writeLockOneStamp);
             Thread.sleep(1000);
             rOne.myVar--;

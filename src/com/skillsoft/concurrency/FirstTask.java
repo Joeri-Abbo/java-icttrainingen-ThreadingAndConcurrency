@@ -16,7 +16,7 @@ public class FirstTask implements Runnable {
     public void run() {
         try {
 
-            long writeLockOneStamp = rOne.rOneLock.writeLock();
+            long writeLockOneStamp = rOne.rOneLock.readLock();
             System.out.println("Lock acquired on ResourceOne by " + Thread.currentThread().getName() + ". Lock stamp is " + writeLockOneStamp);
             int updatedValue = rOne.myVar++;
             Thread.sleep(20000);
@@ -24,7 +24,7 @@ public class FirstTask implements Runnable {
             rOne.rOneLock.unlock(writeLockOneStamp);
             System.out.println("Lock on ResourceOne released by " + Thread.currentThread().getName());
 
-            long writeLockTwoStamp = rTwo.rTwoLock.writeLock();
+            long writeLockTwoStamp = rTwo.rTwoLock.readLock();
             System.out.println("Lock acquired on ResourceTwo by " + Thread.currentThread().getName() + ". Lock stamp is " + writeLockTwoStamp);
             Thread.sleep(2000);
             rTwo.myVar--;
