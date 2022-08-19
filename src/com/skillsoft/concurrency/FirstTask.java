@@ -1,5 +1,7 @@
 package com.skillsoft.concurrency;
 
+import java.util.concurrent.TimeUnit;
+
 public class FirstTask implements Runnable {
 
     ResourceOne rOne;
@@ -14,16 +16,24 @@ public class FirstTask implements Runnable {
     public void run() {
         try {
 
-            boolean rOneLockAcquired = rOne.rOneLock.tryLock();
-            if (rOneLockAcquired){
+            boolean rOneLockAcquired = rOne.rOneLock.tryLock(10, TimeUnit.SECONDS);
+            if (rOneLockAcquired) {
                 System.out.println("Lock acquired on ResourceOne by " + Thread.currentThread().getName());
                 rOne.myVar++;
                 Thread.sleep(1000);
+                rOneLockAcquired = rOne.rOneLock.tryLock(10, TimeUnit.SECONDS);
+                if (rOneLockAcquired) {
+                    System.out.println("Second lock acquired on ResourceOne by " + Thread.currentThread().getName());
+                    rOne.myVar++;
+                    Thread.sleep(1000);
+                    rOne.rOneLock.unlock();
+                    System.out.println("Second lock on ResourceOne released by " + Thread.currentThread().getName());
+                }
                 rOne.rOneLock.unlock();
                 System.out.println("Lock on ResourceOne released by " + Thread.currentThread().getName());
             }
-            boolean rTwoLockAcquired = rTwo.rTwoLock.tryLock();
-            if (rTwoLockAcquired){
+            boolean rTwoLockAcquired = rTwo.rTwoLock.tryLock(10, TimeUnit.SECONDS);
+            if (rTwoLockAcquired) {
                 rTwo.rTwoLock.lock();
                 System.out.println("Lock acquired on ResourceTwo by " + Thread.currentThread().getName());
                 rTwo.myVar--;
