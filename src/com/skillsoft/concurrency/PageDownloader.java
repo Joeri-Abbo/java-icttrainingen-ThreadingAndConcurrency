@@ -25,10 +25,11 @@ public class PageDownloader implements Runnable {
 
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    System.out.println(line);
+                   writer.write(line);
                 }
                 System.out.println("Page downloaded to " + fileName);
                 writer.close();
+                Thread.sleep(1000);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,17 +56,18 @@ public class PageDownloader implements Runnable {
                 "https://tracefy.com/nl/contact"
         };
 
-        Thread downloaderOne = new Thread(new PageDownloader(Arrays.copyOfRange(urlsList,
-                0,
-                urlsList.length)));
+        Thread downloaderOne = new Thread(new PageDownloader(Arrays.copyOfRange(urlsList, 0, urlsList.length/2)));
+        Thread downloaderTwo = new Thread(new PageDownloader(Arrays.copyOfRange(urlsList, urlsList.length/2, urlsList.length)));
 
 
         try {
 
             long startTime = System.currentTimeMillis();
             downloaderOne.start();
+            downloaderTwo.start();
 
             downloaderOne.join();
+            downloaderTwo.join();
 
             long endTime = System.currentTimeMillis();
             System.out.println("Total time taken: " + (endTime - startTime) / 1000 + " s");
