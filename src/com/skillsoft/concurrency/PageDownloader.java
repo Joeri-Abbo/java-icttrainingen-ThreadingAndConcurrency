@@ -18,6 +18,9 @@ public class PageDownloader implements Runnable {
     public void run() {
         try {
             for (String urlString : urlsList) {
+                if (Thread.currentThread().isInterrupted()) {
+                    throw new InterruptedException(Thread.currentThread().getName() + " is interrupted");
+                }
                 URL url = new URL(urlString);
                 String fileName = "files/" + urlString.substring(urlString.lastIndexOf('/') + 1).trim() + ".html";
                 BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -25,11 +28,10 @@ public class PageDownloader implements Runnable {
 
                 String line;
                 while ((line = reader.readLine()) != null) {
-                   writer.write(line);
+                    writer.write(line);
                 }
                 System.out.println("Page downloaded to " + fileName);
                 writer.close();
-                Thread.sleep(1000);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,8 +58,8 @@ public class PageDownloader implements Runnable {
                 "https://tracefy.com/nl/contact"
         };
 
-        Thread downloaderOne = new Thread(new PageDownloader(Arrays.copyOfRange(urlsList, 0, urlsList.length/2)));
-        Thread downloaderTwo = new Thread(new PageDownloader(Arrays.copyOfRange(urlsList, urlsList.length/2, urlsList.length)));
+        Thread downloaderOne = new Thread(new PageDownloader(Arrays.copyOfRange(urlsList, 0, urlsList.length / 2)));
+        Thread downloaderTwo = new Thread(new PageDownloader(Arrays.copyOfRange(urlsList, urlsList.length / 2, urlsList.length)));
 
 
         try {
@@ -66,9 +68,9 @@ public class PageDownloader implements Runnable {
             downloaderOne.start();
             downloaderTwo.start();
 
-            downloaderOne.join();
+            Thread.sleep(10000);
+            downloaderOne.interrupt();
             downloaderTwo.join();
-
             long endTime = System.currentTimeMillis();
             System.out.println("Total time taken: " + (endTime - startTime) / 1000 + " s");
         } catch (InterruptedException e) {
