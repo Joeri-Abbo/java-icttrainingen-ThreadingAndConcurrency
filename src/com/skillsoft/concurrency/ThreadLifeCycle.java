@@ -10,7 +10,7 @@ public class ThreadLifeCycle {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println("I am walking... My state is " + Thread.currentThread().getState());
+                System.out.println("I am walking... My isAlive state is " + Thread.currentThread().isAlive());
             }
         }
     }
@@ -31,21 +31,16 @@ public class ThreadLifeCycle {
 
     public static void main(String[] args) {
         Thread walkThread = new Thread(new Walk());
-
+        System.out.println("isAlive state of walkThread after init: " + walkThread.isAlive());
         try {
             walkThread.start();
-            System.out.println("State of WalkThread thread after start: " + walkThread.getState());
-            System.out.println("State of main thread after WalkThread start: " + Thread.currentThread().getState());
-            Thread.sleep(1000);
+            System.out.println("IsAlive state of walkThread after start " + Thread.currentThread().isAlive());
             walkThread.join(5000);
-            System.out.println("State of WalkThread thread after join: " + walkThread.getState());
-            System.out.println("State of main thread after WalkThread join: " + Thread.currentThread().getState());
+            System.out.println("IsAlive state of walkThread after join " + Thread.currentThread().isAlive());
 
-            System.out.println("Main thread will sleep for 20s...");
-            Thread.sleep(20000);
+            Thread.sleep(10000);
+            System.out.println("IsAlive state of walkThread at the end " + Thread.currentThread().isAlive());
 
-            System.out.println("State of WalkThread thread at the end : " + walkThread.getState());
-            System.out.println("State of main thread after WalkThread  at the end: " + Thread.currentThread().getState());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
