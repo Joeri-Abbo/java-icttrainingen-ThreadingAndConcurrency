@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87563961-1c64-499e-b6d0-194f5d28df18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/Synchronization.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/skillsoft/concurrency/PageDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/PageDownloader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +47,7 @@
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.PageDownloader">
+  <component name="RunManager" selected="Application.Synchronization">
     <configuration name="MyThread" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.skillsoft.concurrency.MyThread" />
       <module name="ThreadingAndConcurrency" />
@@ -63,6 +63,19 @@
     </configuration>
     <configuration name="PageDownloader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.skillsoft.concurrency.PageDownloader" />
+      <module name="ThreadingAndConcurrency" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.skillsoft.concurrency.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Synchronization" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.skillsoft.concurrency.Synchronization" />
       <module name="ThreadingAndConcurrency" />
       <extension name="coverage">
         <pattern>
@@ -102,6 +115,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Synchronization" />
         <item itemvalue="Application.PageDownloader" />
         <item itemvalue="Application.ThreadMethods" />
         <item itemvalue="Application.ThreadLifeCycle" />
@@ -117,7 +131,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1660857067883</updated>
-      <workItem from="1660931433715" duration="5790000" />
+      <workItem from="1660931433715" duration="6822000" />
     </task>
     <servers />
   </component>
