@@ -10,7 +10,10 @@ public class ThreadMethods {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println("I am walking...");
+
+                String threadGroup = Thread.currentThread().getThreadGroup().getName();
+                int activeThread = Thread.activeCount();
+                System.out.println("I am walking..." + " My group " + threadGroup + " has a activeCount of " + activeThread);
             }
         }
     }
@@ -24,25 +27,34 @@ public class ThreadMethods {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println("I am chewing gum...");
+                String threadGroup = Thread.currentThread().getThreadGroup().getName();
+                int activeThread = Thread.activeCount();
+                System.out.println("I am chewing gum..." + " My group " + threadGroup + " has a activeCount of " + activeThread);
             }
         }
     }
 
     public static void main(String[] args) {
-        Thread walkThread = new Thread(new Walk());
-        Thread chewThread = new Thread(new ChewGum());
 
-        walkThread.setPriority(9);
-        chewThread.setPriority(2);
-        System.out.println();
-        System.out.println("WalkThread's priority: " + walkThread.getPriority());
-        System.out.println("ChewThread's priority: " + chewThread.getPriority());
-        System.out.println("Main's priority: " + Thread.currentThread().getPriority());
+        ThreadGroup groupOne = new ThreadGroup("GroupOne");
+        ThreadGroup groupTwo = new ThreadGroup("GroupTwo");
 
-        walkThread.start();
-        chewThread.start();
-        System.out.println();
-        System.out.println();
+        Thread walkThreadOne = new Thread(groupOne, new Walk());
+        Thread walkThreadTwo = new Thread(groupTwo, new Walk());
+        Thread walkThreadThree = new Thread(groupTwo, new Walk());
+
+        Thread chewThreadOne = new Thread(groupOne, new ChewGum());
+        Thread chewThreadTwo = new Thread(groupTwo, new ChewGum());
+
+        walkThreadOne.start();
+        walkThreadTwo.start();
+        walkThreadThree.start();
+
+        chewThreadOne.start();
+        chewThreadTwo.start();
+
+        System.out.println("#Active threads for main: " + Thread.activeCount());
+        System.out.println("#Active threads for GroupOne" + groupOne.activeCount());
+        System.out.println("#Active threads for GroupTwo" + groupTwo.activeCount());
     }
 }
