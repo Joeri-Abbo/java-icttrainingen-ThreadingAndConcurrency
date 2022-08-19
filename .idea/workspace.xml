@@ -7,6 +7,9 @@
     <list default="true" id="87563961-1c64-499e-b6d0-194f5d28df18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/skillsoft/concurrency/FirstTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/FirstTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/skillsoft/concurrency/LockObjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/LockObjects.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/skillsoft/concurrency/ResourceOne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/ResourceOne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/skillsoft/concurrency/ResourceTwo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/ResourceTwo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/skillsoft/concurrency/SecondTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/SecondTask.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -137,7 +140,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1660857067883</updated>
-      <workItem from="1660931433715" duration="13077000" />
+      <workItem from="1660931433715" duration="14057000" />
     </task>
     <servers />
   </component>

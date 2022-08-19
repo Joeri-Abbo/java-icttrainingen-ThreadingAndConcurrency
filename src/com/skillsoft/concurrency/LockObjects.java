@@ -2,19 +2,23 @@ package com.skillsoft.concurrency;
 
 public class LockObjects {
     public static void main(String[] args) throws InterruptedException {
-        ResourceOne rOne = new ResourceOne();
-        ResourceTwo rTwo = new ResourceTwo();
+        ResourceOne r1 = new ResourceOne();
+        ResourceTwo r2 = new ResourceTwo();
 
-        Thread firstTaskThread = new Thread(new FirstTask(rOne, rTwo), "firstTaskThread");
-        Thread secondTaskThread = new Thread(new SecondTask(rOne, rTwo), "secondTaskThread");
+        Thread firstTaskThread = new Thread(new FirstTask(r1, r2), "firstTaskThread");
+        Thread secondTaskThread = new Thread(new SecondTask(r1, r2), "secondTaskThread");
+        Thread anotherSecondTaskTread = new Thread(new SecondTask(r1, r2), "anotherSecondTaskTread");
 
         System.out.println("Starting the two threads...");
 
         firstTaskThread.start();
         secondTaskThread.start();
+        anotherSecondTaskTread.start();
 
         firstTaskThread.join();
         secondTaskThread.join();
-        System.out.println("The two threads are done");
+        anotherSecondTaskTread.join();
+        System.out.println("The three threads are done");
+        System.out.println("End value of resources: " + r1.myVar + ", " + r2.myVar);
     }
 }

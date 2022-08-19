@@ -1,9 +1,8 @@
 package com.skillsoft.concurrency;
 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.StampedLock;
 
 public class ResourceOne {
     public int myVar = 100;
-    Lock rOneLock = new ReentrantLock();
+    StampedLock rOneLock = new StampedLock();
 }
