@@ -1,13 +1,21 @@
 package com.skillsoft.concurrency;
 
 public class CommonCounter {
-    private int myNum = 0;
+    private int firstNum = 0;
+    private int secondNum = 0;
 
-    public void incrementCounter(){
-        myNum++;
+    public void incrementCounter() {
+        synchronized (this) {
+            firstNum++;
+        }
+        secondNum++;
     }
 
-    public int getMyNum(){
-        return myNum;
+    public int getFirstNum() {
+        return firstNum;
+    }
+
+    public int getSecondNum() {
+        return secondNum;
     }
 }
