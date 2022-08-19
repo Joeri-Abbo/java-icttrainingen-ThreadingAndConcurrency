@@ -9,7 +9,7 @@ public class LockObjects {
         Thread secondTaskThread = new Thread(new SecondTask(r1, r2), "secondTaskThread");
         Thread anotherSecondTaskTread = new Thread(new SecondTask(r1, r2), "anotherSecondTaskTread");
 
-        System.out.println("Starting the two threads...");
+        System.out.println("Starting the three threads...");
 
         firstTaskThread.start();
         secondTaskThread.start();
