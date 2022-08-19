@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87563961-1c64-499e-b6d0-194f5d28df18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/FirstTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/ResourceOne.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/ResourceTwo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/skillsoft/concurrency/Deadlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/Deadlock.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,9 +47,14 @@
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.Synchronization">
-    <configuration name="MyThread" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.skillsoft.concurrency.MyThread" />
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.skillsoft.concurrency" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Deadlock">
+    <configuration name="Deadlock" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.skillsoft.concurrency.Deadlock" />
       <module name="ThreadingAndConcurrency" />
       <extension name="coverage">
         <pattern>
@@ -117,11 +120,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Deadlock" />
         <item itemvalue="Application.Synchronization" />
         <item itemvalue="Application.PageDownloader" />
         <item itemvalue="Application.ThreadMethods" />
         <item itemvalue="Application.ThreadLifeCycle" />
-        <item itemvalue="Application.MyThread" />
       </list>
     </recent_temporary>
   </component>
@@ -133,7 +136,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1660857067883</updated>
-      <workItem from="1660931433715" duration="9944000" />
+      <workItem from="1660931433715" duration="10928000" />
     </task>
     <servers />
   </component>
@@ -153,5 +156,20 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/skillsoft/concurrency/Deadlock.java</url>
+          <line>3</line>
+          <properties class="com.skillsoft.concurrency.Deadlock" method="main">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
