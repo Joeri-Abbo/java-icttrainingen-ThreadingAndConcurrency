@@ -11,6 +11,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class WebPageDownloader implements Callable<Long> {
     String[] urlsList;
@@ -49,13 +51,16 @@ public class WebPageDownloader implements Callable<Long> {
     public static void main(String[] args) throws InterruptedException {
         String[] urlsList = {"https://tracefy.com/nl", "https://tracefy.com/nl/b2b", "https://tracefy.com/nl/b2b/fleetmanagement", "https://tracefy.com/nl/b2b/deelvoertuigen-en-verhuur", "https://tracefy.com/nl/b2b/delivery", "https://tracefy.com/nl/b2b/fietsmerken-oem", "https://tracefy.com/nl/consumer", "https://tracefy.com/nl/diefstal-opsporing", "https://tracefy.com/nl/consumer/dealer-worden", "https://tracefy.com/nl/consumer/dealer-zoeken", "https://tracefy.com/nl/elektrische-fiets-verzekeren-met-tracefy", "https://tracefy.com/nl/over-tracefy", "https://tracefy.com/nl/over-tracefy/tracefy-team", "https://tracefy.com/nl/over-tracefy/werken-bij", "https://tracefy.com/nl/over-tracefy/media", "https://tracefy.com/nl/contact"};
 
-        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(2);
 
         Callable<Long> downloaderOne = new WebPageDownloader(Arrays.copyOfRange(urlsList, 0, urlsList.length / 2));
         Callable<Long> downloaderTwo = new WebPageDownloader(Arrays.copyOfRange(urlsList, urlsList.length / 2, urlsList.length));
 
-        Future<Long> fOne = executorService.submit(downloaderOne);
-        Future<Long> fTwo = executorService.submit(downloaderTwo);
+        Future<Long> fOne = executorService.schedule(downloaderOne,30, TimeUnit.SECONDS);
+        Future<Long> fTwo = executorService.schedule(downloaderTwo, 40, TimeUnit.SECONDS);
+
+        System.out.println("The jobs have been scheduled");
+        long startTime = System.currentTimeMillis();
 
         try {
             System.out.println("Download time for first half: " + fOne.get());
@@ -63,6 +68,10 @@ public class WebPageDownloader implements Callable<Long> {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+
+        long endTime = System.currentTimeMillis();
+        System.out.println("Elapsed time since scheduling: " + (endTime - startTime) / 1000 + " s");
+
         executorService.shutdown();
     }
 }
