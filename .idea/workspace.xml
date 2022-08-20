@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87563961-1c64-499e-b6d0-194f5d28df18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/CollectionPerformance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/skillsoft/concurrency/PageDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/PageDownloader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +56,7 @@
       <recent name="com.skillsoft.concurrency" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CollectionPerformance">
+  <component name="RunManager" selected="Application.PageDownloader">
     <configuration name="CollectionPerformance" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.skillsoft.concurrency.CollectionPerformance" />
       <module name="ThreadingAndConcurrency" />
@@ -96,8 +96,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyTask" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.skillsoft.concurrency.MyTask" />
+    <configuration name="PageDownloader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.skillsoft.concurrency.PageDownloader" />
       <module name="ThreadingAndConcurrency" />
       <extension name="coverage">
         <pattern>
@@ -124,11 +124,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PageDownloader" />
         <item itemvalue="Application.CollectionPerformance" />
         <item itemvalue="Application.ConcurrentTask" />
         <item itemvalue="Application.Synchronization" />
         <item itemvalue="Application.Looper" />
-        <item itemvalue="Application.MyTask" />
       </list>
     </recent_temporary>
   </component>
@@ -141,7 +141,7 @@
       <option name="presentableId" value="Default" />
       <updated>1660857067883</updated>
       <workItem from="1660931433715" duration="15140000" />
-      <workItem from="1660988663109" duration="10192000" />
+      <workItem from="1660988663109" duration="11392000" />
     </task>
     <servers />
   </component>
