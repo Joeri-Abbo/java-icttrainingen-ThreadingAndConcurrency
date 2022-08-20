@@ -23,6 +23,12 @@ public class PageDownloader implements Runnable {
         String threadName = Thread.currentThread().getName();
 
         try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            System.out.println(threadName + " has been interrupted before downloading " + urlsList[0]);
+        }
+
+        try {
             for (String urlString : urlsList) {
                 if (Thread.currentThread().isInterrupted()) {
                     throw new InterruptedException(threadName + " is interrupted");
@@ -60,7 +66,10 @@ public class PageDownloader implements Runnable {
         }
 
         latch.await();
-        executorService.shutdown();
+        executorService.shutdownNow();
+        while (!executorService.isTerminated()) {
+            Thread.sleep(1000);
+        }
 
         long endTime = System.currentTimeMillis();
 
