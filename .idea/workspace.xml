@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87563961-1c64-499e-b6d0-194f5d28df18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/skillsoft/concurrency/CommonCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/CommonCounter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/skillsoft/concurrency/CounterIncrementor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/CounterIncrementor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/skillsoft/concurrency/Looper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/Looper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/skillsoft/concurrency/Synchronization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/Synchronization.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,20 +59,7 @@
       <recent name="com.skillsoft.concurrency" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Looper">
-    <configuration name="Deadlock" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.skillsoft.concurrency.Deadlock" />
-      <module name="ThreadingAndConcurrency" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.skillsoft.concurrency.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Synchronization">
     <configuration name="LockObjects" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.skillsoft.concurrency.LockObjects" />
       <module name="ThreadingAndConcurrency" />
@@ -121,13 +112,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Synchronization" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.skillsoft.concurrency.Synchronization" />
+      <module name="ThreadingAndConcurrency" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.skillsoft.concurrency.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Synchronization" />
         <item itemvalue="Application.Looper" />
         <item itemvalue="Application.MyTask" />
         <item itemvalue="Application.ProducerConsumer" />
         <item itemvalue="Application.LockObjects" />
-        <item itemvalue="Application.Deadlock" />
       </list>
     </recent_temporary>
   </component>
@@ -140,7 +144,7 @@
       <option name="presentableId" value="Default" />
       <updated>1660857067883</updated>
       <workItem from="1660931433715" duration="15140000" />
-      <workItem from="1660988663109" duration="6411000" />
+      <workItem from="1660988663109" duration="7055000" />
     </task>
     <servers />
   </component>

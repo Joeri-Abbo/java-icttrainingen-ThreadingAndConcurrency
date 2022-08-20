@@ -1,7 +1,7 @@
 package com.skillsoft.concurrency;
 
 public class Looper implements Runnable {
-    public static volatile boolean keepLooping = true;
+    public static boolean keepLooping = true;
     public static int number = 0;
     public int localNum = 0;
 

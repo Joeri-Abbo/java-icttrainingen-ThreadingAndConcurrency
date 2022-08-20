@@ -4,8 +4,8 @@ public class CounterIncrementor implements Runnable {
     private CommonCounter myCounter;
     private int numIterations;
 
-    public CounterIncrementor(CommonCounter myCounter, int numIterations) {
-        this.myCounter = myCounter;
+    public CounterIncrementor(CommonCounter commonCounter, int numIterations) {
+        this.myCounter = commonCounter;
         this.numIterations = numIterations;
     }
 

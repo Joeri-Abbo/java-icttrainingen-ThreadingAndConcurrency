@@ -3,7 +3,7 @@ package com.skillsoft.concurrency;
 
 public class Synchronization {
 
-    private static final int NUM_ITERATIONS = 100000;
+    private static final int NUM_ITERATIONS = 1000000;
 
     public static void main(String[] args) {
         CommonCounter commonCounter = new CommonCounter();
@@ -18,12 +18,12 @@ public class Synchronization {
             threadOne.start();
             threadTwo.start();
 
-            Thread.sleep(4000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        System.out.println("Start value of firstNum:" + commonCounter.getFirstNum());
-        System.out.println("Start value of secondNum:" + commonCounter.getSecondNum());
+        System.out.println("End value of firstNum:" + commonCounter.getFirstNum());
+        System.out.println("End value of secondNum:" + commonCounter.getSecondNum());
     }
 }
