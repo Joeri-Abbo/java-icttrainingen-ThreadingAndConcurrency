@@ -1,29 +1,21 @@
 package com.skillsoft.concurrency;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class Consumer implements Runnable {
-    SharedQueue sharedQueue;
+    ArrayBlockingQueue<String> sharedQueue;
     String consumerName;
     int consumerCapacity;
 
-    public Consumer(SharedQueue sharedQueue, String name, int capacity) {
+    public Consumer(ArrayBlockingQueue<String> sharedQueue, String name, int capacity) {
         this.sharedQueue = sharedQueue;
         this.consumerName = name;
         this.consumerCapacity = capacity;
     }
 
     public void consume() throws InterruptedException {
-        sharedQueue.queueLock.lock();
-        if (sharedQueue.queue.size() == 0) {
-            System.out.println("Queue is empty " + consumerName + " is waiting...");
-            sharedQueue.notEmpty.await();
-            System.out.println(consumerName + " has woken up");
-
-        }
-
-        String item = sharedQueue.queue.remove();
+        String item = sharedQueue.take();
         System.out.println(consumerName + " has consumed " + item);
-        sharedQueue.notFull.signal();
-        sharedQueue.queueLock.unlock();
+
     }
 
     @Override

@@ -1,10 +1,10 @@
 package com.skillsoft.concurrency;
 
-import java.util.LinkedList;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class ProducerConsumer {
     public static void main(String[] args) {
-        SharedQueue sharedQueue = new SharedQueue(new LinkedList<String>(), 2);
+        ArrayBlockingQueue<String> sharedQueue = new ArrayBlockingQueue<String>(2);
 
         Producer producerOne = new Producer(sharedQueue);
         Producer producerTwo = new Producer(sharedQueue);

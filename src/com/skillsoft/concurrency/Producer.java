@@ -1,9 +1,11 @@
 package com.skillsoft.concurrency;
 
-public class Producer implements Runnable {
-    SharedQueue sharedQueue;
+import java.util.concurrent.ArrayBlockingQueue;
 
-    public Producer(SharedQueue sharedQueue) {
+public class Producer implements Runnable {
+    ArrayBlockingQueue<String> sharedQueue;
+
+    public Producer(ArrayBlockingQueue<String> sharedQueue) {
         this.sharedQueue = sharedQueue;
     }
 
@@ -13,17 +15,8 @@ public class Producer implements Runnable {
     public void produce(String item) throws InterruptedException {
 
         String threadName = Thread.currentThread().getName();
-
-        sharedQueue.queueLock.lock();
-        if (sharedQueue.queue.size() >= sharedQueue.capacity) {
-            System.out.println("Queue is full. Producer is waiting");
-            sharedQueue.notFull.await();
-        }
-
-        sharedQueue.queue.add(item);
+        sharedQueue.put(item);
         System.out.println(threadName + " produced : " + item);
-        sharedQueue.notEmpty.signal();
-        sharedQueue.queueLock.unlock();
     }
 
     @Override
