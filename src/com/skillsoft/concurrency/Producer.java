@@ -28,10 +28,9 @@ public class Producer implements Runnable {
 
     @Override
     public void run() {
-
         for (int i = 0; i < items.length; i++) {
             try {
-                Thread.sleep(1000);
+                Thread.sleep((long) (Math.random() * 1000) * 5);
                 produce(items[i]);
             } catch (InterruptedException e) {
                 e.printStackTrace();
