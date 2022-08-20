@@ -1,9 +1,9 @@
 package com.skillsoft.concurrency;
 
+import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ConcurrentTask implements Runnable {
-    private static final int NUM_ITERATIONS = 10000;
 
     public CopyOnWriteArrayList<String> commonResource;
 
@@ -15,7 +15,7 @@ public class ConcurrentTask implements Runnable {
     public void run() {
         String threadName = Thread.currentThread().getName();
         try {
-            for (int i = 0; i < NUM_ITERATIONS; i++) {
+            for (int i = 0; i < 20; i++) {
                 commonResource.add(threadName + "-data-" + i);
             }
         } catch (Exception e) {
@@ -33,9 +33,15 @@ public class ConcurrentTask implements Runnable {
         firstThread.start();
         secondThread.start();
 
-        firstThread.join();
-        secondThread.join();
+        Thread.sleep(1000);
 
-        System.out.println("#elements in commonRes: " + commonRes.size());
+        Iterator<String> itr = commonRes.iterator();
+
+        while (itr.hasNext()) {
+            String str = (String) itr.next();
+            System.out.println("str : " + str);
+            Thread.sleep(100);
+            itr.remove();
+        }
     }
 }
