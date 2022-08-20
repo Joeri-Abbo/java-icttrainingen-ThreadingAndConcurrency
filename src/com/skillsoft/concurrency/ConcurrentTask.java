@@ -1,13 +1,13 @@
 package com.skillsoft.concurrency;
 
 import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ConcurrentTask implements Runnable {
 
-    public CopyOnWriteArrayList<String> commonResource;
+    public ConcurrentHashMap<String, String> commonResource;
 
-    public ConcurrentTask(CopyOnWriteArrayList<String> commonResource) {
+    public ConcurrentTask(ConcurrentHashMap<String, String> commonResource) {
         this.commonResource = commonResource;
     }
 
@@ -16,7 +16,7 @@ public class ConcurrentTask implements Runnable {
         String threadName = Thread.currentThread().getName();
         try {
             for (int i = 0; i < 20; i++) {
-                commonResource.add(threadName + "-data-" + i);
+                commonResource.put(threadName + "-key-" + i, threadName + "-val-" + i);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -25,7 +25,7 @@ public class ConcurrentTask implements Runnable {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        CopyOnWriteArrayList<String> commonRes = new CopyOnWriteArrayList<String>();
+        ConcurrentHashMap<String, String> commonRes = new ConcurrentHashMap<String, String>();
 
         Thread firstThread = new Thread(new ConcurrentTask(commonRes), "FirstThread");
         Thread secondThread = new Thread(new ConcurrentTask(commonRes), "SecondThread");
@@ -35,11 +35,11 @@ public class ConcurrentTask implements Runnable {
 
         Thread.sleep(1000);
 
-        Iterator<String> itr = commonRes.iterator();
+        Iterator<String> itr = commonRes.keySet().iterator();
 
         while (itr.hasNext()) {
-            String str = (String) itr.next();
-            System.out.println("str : " + str);
+            String str = (String) commonRes.get(itr.next());
+            System.out.println("main : " + str);
             Thread.sleep(100);
             itr.remove();
         }
