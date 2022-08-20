@@ -5,10 +5,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.CountDownLatch;
 
 public class PageDownloader implements Runnable {
@@ -51,19 +49,19 @@ public class PageDownloader implements Runnable {
     public static void main(String[] args) throws InterruptedException {
         String[] urlsList = {"https://tracefy.com/nl", "https://tracefy.com/nl/b2b", "https://tracefy.com/nl/b2b/fleetmanagement", "https://tracefy.com/nl/b2b/deelvoertuigen-en-verhuur", "https://tracefy.com/nl/b2b/delivery", "https://tracefy.com/nl/b2b/fietsmerken-oem", "https://tracefy.com/nl/consumer", "https://tracefy.com/nl/diefstal-opsporing", "https://tracefy.com/nl/consumer/dealer-worden", "https://tracefy.com/nl/consumer/dealer-zoeken", "https://tracefy.com/nl/elektrische-fiets-verzekeren-met-tracefy", "https://tracefy.com/nl/over-tracefy", "https://tracefy.com/nl/over-tracefy/tracefy-team", "https://tracefy.com/nl/over-tracefy/werken-bij", "https://tracefy.com/nl/over-tracefy/media", "https://tracefy.com/nl/contact"};
 
-        int maxThreads = 2;
+        int maxThreads = 4;
         CountDownLatch latch = new CountDownLatch(maxThreads);
-        Thread downloaderOne = new Thread(new PageDownloader(Arrays.copyOfRange(urlsList, 0, urlsList.length / 2), latch));
-        Thread downloaderTwo = new Thread(new PageDownloader(Arrays.copyOfRange(urlsList, urlsList.length / 2, urlsList.length), latch));
-
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-
+        ExecutorService executorService = Executors.newFixedThreadPool(maxThreads);
         long startTime = System.currentTimeMillis();
 
-        executorService.submit(downloaderOne);
-        executorService.submit(downloaderTwo);
+        for (String url : urlsList) {
+            Thread downloader = new Thread(new PageDownloader(new String[]{url}, latch));
+            executorService.submit(downloader);
+        }
 
         latch.await();
+        executorService.shutdown();
+
         long endTime = System.currentTimeMillis();
 
         System.out.println("Total time taken: " + (endTime - startTime) / 1000 + " s");
