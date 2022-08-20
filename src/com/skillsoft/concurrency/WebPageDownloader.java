@@ -6,15 +6,13 @@ import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Arrays;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-public class WebPageDownloader implements Callable<Long> {
+public class WebPageDownloader implements Runnable {
     String[] urlsList;
 
     public WebPageDownloader(String[] urlsList) {
@@ -22,9 +20,10 @@ public class WebPageDownloader implements Callable<Long> {
     }
 
     @Override
-    public Long call() throws Exception {
-        long startTime = System.currentTimeMillis();
+    public void run() {
+        String threadName = Thread.currentThread().getName();
 
+        System.out.println(threadName + " has STARTED a run!");
         try {
             for (String urlString : urlsList) {
                 URL url = new URL(urlString);
@@ -43,9 +42,7 @@ public class WebPageDownloader implements Callable<Long> {
             e.printStackTrace();
         }
 
-        long endTime = System.currentTimeMillis();
-
-        return endTime - startTime;
+        System.out.println(threadName + " has COMPLETED a run!");
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -53,11 +50,11 @@ public class WebPageDownloader implements Callable<Long> {
 
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(2);
 
-        Callable<Long> downloaderOne = new WebPageDownloader(Arrays.copyOfRange(urlsList, 0, urlsList.length / 2));
-        Callable<Long> downloaderTwo = new WebPageDownloader(Arrays.copyOfRange(urlsList, urlsList.length / 2, urlsList.length));
+        Runnable downloaderOne = new WebPageDownloader(Arrays.copyOfRange(urlsList, 0, urlsList.length / 2));
+        Runnable downloaderTwo = new WebPageDownloader(Arrays.copyOfRange(urlsList, urlsList.length / 2, urlsList.length));
 
-        Future<Long> fOne = executorService.schedule(downloaderOne,30, TimeUnit.SECONDS);
-        Future<Long> fTwo = executorService.schedule(downloaderTwo, 40, TimeUnit.SECONDS);
+        ScheduledFuture fOne = executorService.scheduleAtFixedRate(downloaderOne,10,60, TimeUnit.SECONDS);
+        ScheduledFuture fTwo = executorService.scheduleAtFixedRate(downloaderTwo, 15,60, TimeUnit.SECONDS);
 
         System.out.println("The jobs have been scheduled");
         long startTime = System.currentTimeMillis();
