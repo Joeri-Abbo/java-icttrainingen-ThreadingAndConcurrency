@@ -11,19 +11,17 @@ public class Producer implements Runnable {
 
 
     public void produce(String item) throws InterruptedException {
-        synchronized (sharedQueue) {
-            if (sharedQueue.queue.size() >= sharedQueue.capacity) {
-                System.out.println("Queue is full. Producer is waiting");
-                sharedQueue.wait();
-                System.out.println("Producer has woken up");
-            }
+
+        sharedQueue.queueLock.lock();
+        if (sharedQueue.queue.size() >= sharedQueue.capacity) {
+            System.out.println("Queue is full. Producer is waiting");
+            sharedQueue.notFull.await();
         }
 
-        synchronized (sharedQueue) {
-            sharedQueue.queue.add(item);
-            System.out.println("Produced : " + item);
-            sharedQueue.notify();
-        }
+        sharedQueue.queue.add(item);
+        System.out.println("Produced : " + item);
+        sharedQueue.notEmpty.signal();
+        sharedQueue.queueLock.unlock();
     }
 
     @Override

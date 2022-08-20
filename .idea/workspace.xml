@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="87563961-1c64-499e-b6d0-194f5d28df18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/skillsoft/concurrency/ProducerConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/ProducerConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/skillsoft/concurrency/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/Consumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/skillsoft/concurrency/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/Producer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/skillsoft/concurrency/SharedQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/SharedQueue.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +140,7 @@
       <option name="presentableId" value="Default" />
       <updated>1660857067883</updated>
       <workItem from="1660931433715" duration="15140000" />
-      <workItem from="1660988663109" duration="1913000" />
+      <workItem from="1660988663109" duration="2579000" />
     </task>
     <servers />
   </component>

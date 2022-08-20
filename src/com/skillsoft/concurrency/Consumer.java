@@ -12,19 +12,18 @@ public class Consumer implements Runnable {
     }
 
     public void consume() throws InterruptedException {
-        synchronized (sharedQueue) {
-            if (sharedQueue.queue.size() == 0) {
-                System.out.println("Queue is empty " + consumerName + " is waiting...");
-                sharedQueue.wait();
-                System.out.println(consumerName + " has woken up");
-            }
+        sharedQueue.queueLock.lock();
+        if (sharedQueue.queue.size() == 0) {
+            System.out.println("Queue is empty " + consumerName + " is waiting...");
+            sharedQueue.notEmpty.await();
+            System.out.println(consumerName + " has woken up");
+
         }
 
-        synchronized (sharedQueue) {
-            String item = sharedQueue.queue.remove();
-            System.out.println(consumerName + " has consumed " + item);
-            sharedQueue.notify();
-        }
+        String item = sharedQueue.queue.remove();
+        System.out.println(consumerName + " has consumed " + item);
+        sharedQueue.notFull.signal();
+        sharedQueue.queueLock.unlock();
     }
 
     @Override
