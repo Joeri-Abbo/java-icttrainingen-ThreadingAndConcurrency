@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87563961-1c64-499e-b6d0-194f5d28df18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/RecursiveDownloader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/skillsoft/concurrency/RecursiveDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/skillsoft/concurrency/RecursiveDownloader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +55,7 @@
       <recent name="com.skillsoft.concurrency" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.WebPageDownloader">
+  <component name="RunManager" selected="Application.RecursiveDownloader">
     <configuration name="CollectionPerformance" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.skillsoft.concurrency.CollectionPerformance" />
       <module name="ThreadingAndConcurrency" />
@@ -96,8 +95,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Synchronization" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.skillsoft.concurrency.Synchronization" />
+    <configuration name="RecursiveDownloader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.skillsoft.concurrency.RecursiveDownloader" />
       <module name="ThreadingAndConcurrency" />
       <extension name="coverage">
         <pattern>
@@ -124,11 +123,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RecursiveDownloader" />
         <item itemvalue="Application.WebPageDownloader" />
         <item itemvalue="Application.PageDownloader" />
         <item itemvalue="Application.CollectionPerformance" />
         <item itemvalue="Application.ConcurrentTask" />
-        <item itemvalue="Application.Synchronization" />
       </list>
     </recent_temporary>
   </component>
@@ -141,7 +140,7 @@
       <option name="presentableId" value="Default" />
       <updated>1660857067883</updated>
       <workItem from="1660931433715" duration="15140000" />
-      <workItem from="1660988663109" duration="16474000" />
+      <workItem from="1660988663109" duration="16820000" />
     </task>
     <servers />
   </component>
