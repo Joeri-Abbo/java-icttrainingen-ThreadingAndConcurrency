@@ -56,7 +56,7 @@ public class PageDownloader implements Runnable {
         Thread downloaderOne = new Thread(new PageDownloader(Arrays.copyOfRange(urlsList, 0, urlsList.length / 2), latch));
         Thread downloaderTwo = new Thread(new PageDownloader(Arrays.copyOfRange(urlsList, urlsList.length / 2, urlsList.length), latch));
 
-        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
 
         long startTime = System.currentTimeMillis();
 
