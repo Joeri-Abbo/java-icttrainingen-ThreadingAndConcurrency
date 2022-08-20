@@ -1,15 +1,13 @@
 package com.skillsoft.concurrency;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ConcurrentTask implements Runnable {
     private static final int NUM_ITERATIONS = 10000;
 
-    public Collection<String> commonResource;
+    public CopyOnWriteArrayList<String> commonResource;
 
-    public ConcurrentTask(Collection<String> commonResource) {
+    public ConcurrentTask(CopyOnWriteArrayList<String> commonResource) {
         this.commonResource = commonResource;
     }
 
@@ -27,7 +25,7 @@ public class ConcurrentTask implements Runnable {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Collection<String> commonRes = Collections.synchronizedCollection(new ArrayList<>());
+        CopyOnWriteArrayList<String> commonRes = new CopyOnWriteArrayList<String>();
 
         Thread firstThread = new Thread(new ConcurrentTask(commonRes), "FirstThread");
         Thread secondThread = new Thread(new ConcurrentTask(commonRes), "SecondThread");
