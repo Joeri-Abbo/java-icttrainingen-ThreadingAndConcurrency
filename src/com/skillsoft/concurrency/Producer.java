@@ -12,6 +12,8 @@ public class Producer implements Runnable {
 
     public void produce(String item) throws InterruptedException {
 
+        String threadName = Thread.currentThread().getName();
+
         sharedQueue.queueLock.lock();
         if (sharedQueue.queue.size() >= sharedQueue.capacity) {
             System.out.println("Queue is full. Producer is waiting");
@@ -19,7 +21,7 @@ public class Producer implements Runnable {
         }
 
         sharedQueue.queue.add(item);
-        System.out.println("Produced : " + item);
+        System.out.println(threadName + " produced : " + item);
         sharedQueue.notEmpty.signal();
         sharedQueue.queueLock.unlock();
     }
